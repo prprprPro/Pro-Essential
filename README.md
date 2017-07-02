@@ -51,12 +51,12 @@
 	   设置家
 	
 ### 数据性更新
-	14.新增文件Permission.yml
+	1. 新增文件Permission.yml
 	   设置指令权限（EveryOne, OP）
 		   
-	15.新增文件spawn.yml
+	2. 新增文件spawn.yml
 	   储存出生点数据
 	   
 ### 管理性更新
-	16.新增配置Settings.MaxAmountOfHome
+	1. 新增配置Settings.MaxAmountOfHome
 	   玩家设置家的数量上限V1.0.0
