@@ -1,0 +1,44 @@
+name: Pro-Essential
+main: cn.szzxol.pro.essential.Essential
+version: 1.0.0
+author: I_promise
+commands:
+   back:
+      description: Pro-Essential插件命令
+      usage: /back
+   fly:
+      description: Pro-Essential插件命令
+      usage: /fly
+   gm:
+      description: Pro-Essential插件命令
+      usage: /gm
+   home:
+      description: Pro-Essential插件命令
+      usage: /home
+   sethome:
+      description: Pro-Essential插件命令
+      usage: /sethome
+   spawn:
+      description: Pro-Essential插件命令
+      usage: /spawn
+   speed:
+      description: Pro-Essential插件命令
+      usage: /speed
+   tp:
+      description: Pro-Essential插件命令
+      usage: /tp
+   tpa:
+      description: Pro-Essential插件命令
+      usage: /tpa
+   tpaccept:
+      description: Pro-Essential插件命令
+      usage: /tpaccepy
+   tpahere:
+      description: Pro-Essential插件命令
+      usage: /tpahere
+   tpdeny:
+      description: Pro-Essential插件命令
+      usage: /tpdeny
+   tphere:
+      description: Pro-Essential插件命令
+      usage: /tphere
