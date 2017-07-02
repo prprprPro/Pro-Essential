@@ -51,6 +51,7 @@ public class CommandSethome {
         String Name = player.getName();
         YamlConfiguration config = getConfiguration("/players/" + Name);
         config.set("Home." + index + ".set", true);
+        config.set("Home." + index + ".world", player.getLocation().getWorld().getName());
         config.set("Home." + index + ".x", player.getLocation().getX());
         config.set("Home." + index + ".y", player.getLocation().getY());
         config.set("Home." + index + ".z", player.getLocation().getZ());

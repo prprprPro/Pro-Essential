@@ -18,9 +18,9 @@ public class MsgShow {
         YamlConfiguration config = getConfiguration("/players/" + player.getName());
         for (int index = 1; index <= DefaultConfig.getInt("Settings.MaxAmountOfHome"); index++) {
             if (config.getBoolean("Home." + index + ".set") == true) {
-                player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("编号：").append(ChatColor.WHITE).append(ShowBlank(index, 4)).append(ChatColor.GOLD).append(" 坐标：").append(ChatColor.WHITE).append("（").append((int) config.getDouble("Home." + index + ".x")).append("，").append((int) config.getDouble("Home." + index + ".y")).append("，").append((int) config.getDouble("Home." + index + ".y")).append("）").toString());
+                player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("序号：").append(ChatColor.WHITE).append(ShowBlank(index, DefaultConfig.getString("Settings.MaxAmountOfHome").length() + 2)).append(ChatColor.GOLD).append(" 坐标：").append(ChatColor.WHITE).append("（").append((int) config.getDouble("Home." + index + ".x")).append("，").append((int) config.getDouble("Home." + index + ".y")).append("，").append((int) config.getDouble("Home." + index + ".y")).append("）").toString());
             } else {
-                player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("编号：").append(ChatColor.WHITE).append(ShowBlank(index, 4)).append(ChatColor.GOLD).append(" 坐标：").append(ChatColor.WHITE).append("未设置").toString());
+                player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("序号：").append(ChatColor.WHITE).append(ShowBlank(index, DefaultConfig.getString("Settings.MaxAmountOfHome").length() + 2)).append(ChatColor.GOLD).append(" 坐标：").append(ChatColor.WHITE).append("未设置").toString());
             }
         }
         player.sendMessage((new StringBuilder()).append(ChatColor.WHITE).append("########Home列表########").toString());

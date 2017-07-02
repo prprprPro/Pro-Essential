@@ -5,6 +5,7 @@ import static cn.szzxol.pro.essential.Essential.DefaultConfig;
 import static cn.szzxol.pro.essential.messages.MsgError.MsgErrorArgs;
 import static cn.szzxol.pro.essential.utils.Configuration.getConfiguration;
 import static cn.szzxol.pro.essential.utils.Configuration.saveConfiguration;
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -20,7 +21,8 @@ public class PlayerChat implements Listener {
     @EventHandler
     public void PlayerChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
-        YamlConfiguration config = getConfiguration("/players/" + player.getName());
+        String Name = player.getName();
+        YamlConfiguration config = getConfiguration("/players/" + Name);
         if (config.getBoolean("Home.isSettingHome") == true) {
             config.set("Home.isSettingHome", false);
             saveConfiguration(config, "/players/" + player.getName());
@@ -38,6 +40,7 @@ public class PlayerChat implements Listener {
             setHome(player, Integer.valueOf(msg));
             event.setCancelled(true);
         }
+        event.setMessage(event.getMessage().replace(Name, (new StringBuilder()).append(ChatColor.GREEN).append(Name).toString()));
     }
 
 }

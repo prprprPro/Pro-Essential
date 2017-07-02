@@ -19,6 +19,7 @@ public class PlayerTeleport implements Listener {
         String Name = event.getPlayer().getName();
         Location LocationFrom = event.getFrom();
         YamlConfiguration config = getConfiguration("/players/" + Name);
+        config.set("LastPosition.world", LocationFrom.getWorld().getName());
         config.set("LastPosition.x", LocationFrom.getX());
         config.set("LastPosition.y", LocationFrom.getY());
         config.set("LastPosition.z", LocationFrom.getZ());

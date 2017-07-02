@@ -1,6 +1,7 @@
 package cn.szzxol.pro.essential.messages;
 
 import static cn.szzxol.pro.essential.Essential.DefaultConfig;
+import static cn.szzxol.pro.essential.messages.MsgShow.MsgShowHomeList;
 import static cn.szzxol.pro.essential.utils.Mode.getFlyMode;
 import static cn.szzxol.pro.essential.utils.Mode.getFlyingMode;
 import static cn.szzxol.pro.essential.utils.Mode.getGameMode;
@@ -24,6 +25,11 @@ public class MsgTip {
     public static void MsgisSettingHome(Player player) {
         player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("已进入SetHome模式").toString());
         player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("输入 ").append(ChatColor.WHITE).append("1-").append(DefaultConfig.getInt("Settings.MaxAmountOfHome")).append(ChatColor.GOLD).append(" 的任意数字把您的位置设为指定编号的家").toString());
+    }
+    
+    public static void MsgGoHome(Player player) {
+        MsgShowHomeList(player);
+        player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("输入 ").append(ChatColor.WHITE).append("/home <序号>").append(ChatColor.GOLD).append(" 回家").toString());
     }
 
     public static void MsgHomeSet(Player player) {

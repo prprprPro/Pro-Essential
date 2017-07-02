@@ -41,6 +41,7 @@ public class PlayerJoin implements Listener {
         }
         Location Location = player.getLocation();
         YamlConfiguration config = getConfiguration("/players/" + Name);
+        config.set("LastPosition.world", Location.getWorld().getName());
         config.set("LastPosition.x", Location.getX());
         config.set("LastPosition.y", Location.getY());
         config.set("LastPosition.z", Location.getZ());

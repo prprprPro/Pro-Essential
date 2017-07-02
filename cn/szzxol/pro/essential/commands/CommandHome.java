@@ -3,9 +3,10 @@ package cn.szzxol.pro.essential.commands;
 import static cn.szzxol.pro.essential.Essential.DefaultConfig;
 import static cn.szzxol.pro.essential.messages.MsgError.MsgErrorArgs;
 import static cn.szzxol.pro.essential.messages.MsgError.MsgHomeNotSet;
-import static cn.szzxol.pro.essential.messages.MsgTip.MsgBack;
+import static cn.szzxol.pro.essential.messages.MsgTip.MsgGoHome;
 import static cn.szzxol.pro.essential.messages.MsgTip.MsgHome;
 import static cn.szzxol.pro.essential.utils.Configuration.getConfiguration;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.Command;
@@ -20,7 +21,7 @@ public class CommandHome {
 
     public static boolean CommandHome(Player player, Command cmd, String label, String[] args) {
         if (args.length < 1) {
-            PlayerHome(player, 1);
+            MsgGoHome(player);
             return true;
         } else if (args.length == 1) {
             try {
@@ -44,7 +45,8 @@ public class CommandHome {
     public static void PlayerHome(Player player, int index) {
         YamlConfiguration config = getConfiguration("/players/" + player.getName());
         if (config.getBoolean("Home." + index + ".set") == true) {
-            World world = player.getWorld();
+            String pw = config.getString("Home." + index + ".world") == null ? "world" : config.getString("Home." + index + ".world");
+            World world = Bukkit.getWorld(pw) == null ? Bukkit.getWorld("world") : Bukkit.getWorld(pw);
             Location LocationTo = new Location(world, config.getDouble("Home." + index + ".x"), config.getDouble("Home." + index + ".y"), config.getDouble("Home." + index + ".z"), (float) config.getDouble("Home." + index + ".yaw"), (float) config.getDouble("Home." + index + ".pitch"));
             player.teleport(LocationTo);
             MsgHome(player);
