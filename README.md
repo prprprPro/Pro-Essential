@@ -1,8 +1,8 @@
 # Pro-Essential
 
-V1.0.0
+## V1.0.0
 
-	架构性更新
+### 架构性更新
 	1. 新增指令/back
 	   回到上一传送位置
 		   
@@ -42,13 +42,13 @@ V1.0.0
 	13.新增指令/sethome
 	   设置家
 	
-	数据性更新
-	14.新增文件Permission.yml
+### 数据性更新
+	1. 新增文件Permission.yml
 	   设置指令权限（EveryOne, OP）
 		   
-	15.新增文件spawn.yml
+	2. 新增文件spawn.yml
 	   储存出生点数据
 	   
-	管理性更新
-	16.新增配置Settings.MaxAmountOfHome
-	   玩家设置家的数量上限V1.0.0
+### 管理性更新
+	1. 新增配置Settings.MaxAmountOfHome
+	   玩家设置家的数量上限
