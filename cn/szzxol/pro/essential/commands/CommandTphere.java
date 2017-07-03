@@ -27,10 +27,6 @@ public class CommandTphere {
     }
 
     public static void TPHere(Player player, String TargetName) {
-        if (!player.isOp()) {
-            MsgNoPermission(player);
-            return;
-        }
         String Name = player.getName();
         List<Player> AllPlayers = new ArrayList<>();
         AllPlayers.addAll(Bukkit.getServer().getOnlinePlayers());

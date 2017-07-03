@@ -24,6 +24,7 @@ public class MsgShow {
             }
         }
         player.sendMessage((new StringBuilder()).append(ChatColor.WHITE).append("########Home列表########").toString());
+        player.sendMessage((new StringBuilder()).append(ChatColor.WHITE).append("").toString());
     }
 
     public static String ShowBlank(int num, int length) {

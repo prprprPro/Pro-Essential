@@ -3,8 +3,10 @@ package cn.szzxol.pro.essential.commands;
 import static cn.szzxol.pro.essential.commands.CommandBack.CommandBack;
 import static cn.szzxol.pro.essential.commands.CommandFly.CommandFly;
 import static cn.szzxol.pro.essential.commands.CommandGamemode.CommandGamemode;
+import static cn.szzxol.pro.essential.commands.CommandHeal.CommandHeal;
 import static cn.szzxol.pro.essential.commands.CommandHome.CommandHome;
 import static cn.szzxol.pro.essential.commands.CommandSethome.CommandSetHome;
+import static cn.szzxol.pro.essential.commands.CommandSetspawn.CommandSetspawn;
 import static cn.szzxol.pro.essential.commands.CommandSpawn.CommandSpawn;
 import static cn.szzxol.pro.essential.commands.CommandSpeed.CommandSpeed;
 import static cn.szzxol.pro.essential.commands.CommandTp.CommandTp;
@@ -14,6 +16,9 @@ import static cn.szzxol.pro.essential.commands.CommandTpdeny.CommandTpadeny;
 import static cn.szzxol.pro.essential.commands.CommandTpahere.CommandTpahere;
 import static cn.szzxol.pro.essential.commands.CommandTphere.CommandTphere;
 import static cn.szzxol.pro.essential.permission.Permission.isPermised;
+import static java.util.Arrays.asList;
+import java.util.LinkedList;
+import java.util.List;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
@@ -23,6 +28,9 @@ import org.bukkit.entity.Player;
  * @author I_promise
  */
 public class CommandExecute {
+
+    public static List EO = new LinkedList<>(asList("back", "spawn", "tpa", "tpaccept", "tpden", "tpahere", "sethome"));
+    public static List OP = new LinkedList<>(asList("fly", "gm", "speed", "tp", "tphere", "setspawn", "heal"));
 
     public static boolean CommandExecute(CommandSender sender, Command cmd, String label, String[] args) {
         String command = cmd.getName().toLowerCase();
@@ -42,6 +50,8 @@ public class CommandExecute {
                     return CommandHome(player, cmd, label, args);
                 case "sethome":
                     return CommandSetHome(player, cmd, label, args);
+                case "setspawn":
+                    return CommandSetspawn(player, cmd, label, args);
                 case "spawn":
                     return CommandSpawn(player, cmd, label, args);
                 case "speed":
@@ -58,6 +68,8 @@ public class CommandExecute {
                     return CommandTpadeny(player, cmd, label, args);
                 case "tphere":
                     return CommandTphere(player, cmd, label, args);
+                case "heal":
+                    return CommandHeal(player, cmd, label, args);
                 default:
                     return true;
             }

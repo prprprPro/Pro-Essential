@@ -35,6 +35,10 @@ public class MsgTip {
     public static void MsgHomeSet(Player player) {
         player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("已成功把你的当前位置设置为家").toString());
     }
+    
+    public static void MsgSpawnSet(Player player) {
+        player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("已成功把你的当前位置设置为出生点").toString());
+    }
 
     public static void MsgSpawn(Player player) {
         player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("传送到出生点...").toString());
@@ -42,6 +46,10 @@ public class MsgTip {
 
     public static void MsgFly(Player player, Player target) {
         player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append(getFlyMode(player)).append("了玩家 ").append(ChatColor.WHITE).append(target.getName()).append(ChatColor.GOLD).append(" 的飞行模式").toString());
+    }
+    
+    public static void MsgHeal(Player player, Player target) {
+        player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("恢复了玩家 ").append(ChatColor.WHITE).append(target.getName()).append(ChatColor.GOLD).append(" 的生命值").toString());
     }
 
     public static void MsgGamemode(Player player, Player target) {

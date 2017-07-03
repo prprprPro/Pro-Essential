@@ -5,6 +5,7 @@ import static cn.szzxol.pro.essential.Essential.DefaultConfig;
 import static cn.szzxol.pro.essential.messages.MsgError.MsgErrorArgs;
 import static cn.szzxol.pro.essential.utils.Configuration.getConfiguration;
 import static cn.szzxol.pro.essential.utils.Configuration.saveConfiguration;
+import static org.bukkit.Bukkit.getLogger;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -40,7 +41,9 @@ public class PlayerChat implements Listener {
             setHome(player, Integer.valueOf(msg));
             event.setCancelled(true);
         }
-        event.setMessage(event.getMessage().replace(Name, (new StringBuilder()).append(ChatColor.GREEN).append(Name).toString()));
+        event.setFormat(event.getFormat().replace("%1$s", (new StringBuilder()).append(ChatColor.GREEN).append("%1$s").toString()));
+        getLogger().info(event.getFormat());
+        getLogger().info(event.getMessage());
     }
 
 }

@@ -3,6 +3,7 @@ package cn.szzxol.pro.essential;
 import static cn.szzxol.pro.essential.commands.CommandExecute.CommandExecute;
 import static cn.szzxol.pro.essential.utils.Configuration.getConfiguration;
 import static cn.szzxol.pro.essential.utils.Configuration.saveDefaultYaml;
+import static cn.szzxol.pro.essential.utils.Configuration.updatePermissionConfiguration;
 import java.io.File;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -29,9 +30,10 @@ public class Essential extends JavaPlugin {
         folder = this.getDataFolder();
         DefaultConfig = this.getConfig();
         version = DefaultConfig.getString("Version");
+        initial();
         SpawnLocation = getConfiguration("spawn");
         Perm = getConfiguration("Permission");
-        initial();
+        updatePermissionConfiguration();
         getLogger().info("插件加载完成...");
     }
 
@@ -42,6 +44,10 @@ public class Essential extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new cn.szzxol.pro.essential.listener.PlayerTeleport(), this);
         saveDefaultYaml("spawn");
         saveDefaultYaml("Permission");
+    }
+    
+    public static void  updateFile(){
+        
     }
 
     @Override
