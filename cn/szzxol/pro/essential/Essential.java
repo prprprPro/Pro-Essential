@@ -45,10 +45,6 @@ public class Essential extends JavaPlugin {
         saveDefaultYaml("spawn");
         saveDefaultYaml("Permission");
     }
-    
-    public static void  updateFile(){
-        
-    }
 
     @Override
     public void onDisable() {

@@ -1,8 +1,11 @@
 name: Pro-Essential
 main: cn.szzxol.pro.essential.Essential
-version: 1.0.2
+version: 1.0.3
 author: I_promise
 commands:
+   ess:
+      description: Pro-Essential插件命令
+      usage: /ess
    back:
       description: Pro-Essential插件命令
       usage: /back
@@ -48,3 +51,10 @@ commands:
    tphere:
       description: Pro-Essential插件命令
       usage: /tphere
+   sun:
+      description: Pro-Essential插件命令
+      usage: /sun
+   rain:
+      description: Pro-Essential插件命令
+      usage: /rain
+       

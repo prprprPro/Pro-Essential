@@ -41,9 +41,8 @@ public class PlayerChat implements Listener {
             setHome(player, Integer.valueOf(msg));
             event.setCancelled(true);
         }
-        event.setFormat(event.getFormat().replace("%1$s", (new StringBuilder()).append(ChatColor.GREEN).append("%1$s").append(ChatColor.WHITE).toString()));
-        getLogger().info(event.getFormat());
-        getLogger().info(event.getMessage());
+        String format = DefaultConfig.getString("Settings.ChatFormat").replace("%player%", "%1$s").replace("%msg%", "%2$s");
+        event.setFormat(format);
     }
 
 }

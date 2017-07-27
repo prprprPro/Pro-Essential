@@ -59,5 +59,17 @@ public class MsgTip {
     public static void MsgSpeed(Player player, Player target, Float speed) {
         player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("已将玩家 ").append(ChatColor.WHITE).append(target.getName()).append(ChatColor.GOLD).append(" 的").append(getFlyingMode(target)).append("速度设为 ").append(ChatColor.WHITE).append(speed).toString());
     }
+    
+    public static void MsgSun(Player player) {
+        player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("已将天气设置为晴天...").toString());
+    }
+    
+    public static void MsgRain(Player player) {
+        player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("已将天气设置为雨天...").toString());
+    }
+    
+    public static void MsgReload(Player player) {
+        player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("插件重载完成...").toString());
+    }
 
 }
