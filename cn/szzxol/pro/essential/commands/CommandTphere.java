@@ -31,14 +31,14 @@ public class CommandTphere {
         List<Player> AllPlayers = new ArrayList<>();
         AllPlayers.addAll(Bukkit.getServer().getOnlinePlayers());
         for (Player target : AllPlayers) {
-            if (TargetName == null ? false : TargetName.equals(target.getName())) {
+            if (TargetName == null ? false : (TargetName.equalsIgnoreCase(target.getName()) || target.getName().toLowerCase().startsWith(TargetName.toLowerCase()))) {
                 target.teleport(player);
-                player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("已把玩家 ").append(ChatColor.WHITE).append(TargetName).append(ChatColor.GOLD).append(" 传送到你身边").toString());
+                player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("已把玩家 ").append(ChatColor.WHITE).append(target.getName()).append(ChatColor.GOLD).append(" 传送到你身边").toString());
                 target.sendMessage((new StringBuilder()).append(ChatColor.AQUA).append(ChatColor.BOLD).append(Name).append(ChatColor.WHITE).append(ChatColor.BOLD).append(" 把你传送到他的身边").toString());
                 return;
             }
         }
-        MsgPlayerNotFound(player,TargetName);
+        MsgPlayerNotFound(player, TargetName);
         return;
     }
 }

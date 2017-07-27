@@ -1,7 +1,6 @@
 package cn.szzxol.pro.essential.commands;
 
 import static cn.szzxol.pro.essential.messages.MsgError.MsgErrorArgs;
-import static cn.szzxol.pro.essential.messages.MsgError.MsgNoPermission;
 import static cn.szzxol.pro.essential.messages.MsgError.MsgPlayerNotFound;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,9 +29,9 @@ public class CommandTp {
         List<Player> AllPlayers = new ArrayList<>();
         AllPlayers.addAll(Bukkit.getServer().getOnlinePlayers());
         for (Player target : AllPlayers) {
-            if (TargetName == null ? false : TargetName.equals(target.getName()) || target.getName().toLowerCase().startsWith(TargetName)) {
+            if (TargetName == null ? false : (TargetName.equalsIgnoreCase(target.getName()) || target.getName().toLowerCase().startsWith(TargetName.toLowerCase()))) {
                 player.teleport(target);
-                player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("已传送到玩家 ").append(ChatColor.WHITE).append(TargetName).append(ChatColor.GOLD).append(" 身边").toString());
+                player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("已传送到玩家 ").append(ChatColor.WHITE).append(target.getName()).append(ChatColor.GOLD).append(" 身边").toString());
                 return;
             }
         }

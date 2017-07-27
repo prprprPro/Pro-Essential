@@ -16,6 +16,7 @@ import static cn.szzxol.pro.essential.commands.CommandTpa.CommandTpa;
 import static cn.szzxol.pro.essential.commands.CommandTpaccept.CommandTpaccept;
 import static cn.szzxol.pro.essential.commands.CommandTpdeny.CommandTpadeny;
 import static cn.szzxol.pro.essential.commands.CommandTpahere.CommandTpahere;
+import static cn.szzxol.pro.essential.commands.CommandTpall.CommandTpall;
 import static cn.szzxol.pro.essential.commands.CommandTphere.CommandTphere;
 import static cn.szzxol.pro.essential.permission.Permission.isPermised;
 import static java.util.Arrays.asList;
@@ -31,8 +32,8 @@ import org.bukkit.entity.Player;
  */
 public class CommandExecute {
 
-    public static List EO = new LinkedList<>(asList("back", "spawn", "tpa", "tpaccept", "tpden", "tpahere", "sethome"));
-    public static List OP = new LinkedList<>(asList("fly", "gm", "speed", "tp", "tphere", "setspawn", "heal", "sun", "rain", "ess"));
+    public static List EO = new LinkedList<>(asList("back", "spawn", "tpa", "tpaccept", "tpdeny", "tpahere", "sethome", "home"));
+    public static List OP = new LinkedList<>(asList("fly", "gm", "speed", "tp", "tphere", "setspawn", "heal", "sun", "rain", "ess", "tpall"));
 
     public static boolean CommandExecute(CommandSender sender, Command cmd, String label, String[] args) {
         String command = cmd.getName().toLowerCase();
@@ -62,6 +63,8 @@ public class CommandExecute {
                     return CommandTp(player, cmd, label, args);
                 case "tpa":
                     return CommandTpa(player, cmd, label, args);
+                case "tpall":
+                    return CommandTpall(player, cmd, label, args);
                 case "tpaccept":
                     return CommandTpaccept(player, cmd, label, args);
                 case "tpahere":

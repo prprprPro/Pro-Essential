@@ -5,6 +5,9 @@ import static cn.szzxol.pro.essential.utils.Configuration.getConfiguration;
 import static cn.szzxol.pro.essential.utils.Configuration.saveDefaultYaml;
 import static cn.szzxol.pro.essential.utils.Configuration.updatePermissionConfiguration;
 import java.io.File;
+import static java.util.Arrays.asList;
+import java.util.LinkedList;
+import java.util.List;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -50,7 +53,7 @@ public class Essential extends JavaPlugin {
     public void onDisable() {
         getLogger().info("插件卸载完成...");
     }
-
+    
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         CommandExecute(sender, cmd, label, args);

@@ -39,6 +39,9 @@ commands:
    tpa:
       description: Pro-Essential插件命令
       usage: /tpa
+   tpall:
+      description: Pro-Essential插件命令
+      usage: /tpall
    tpaccept:
       description: Pro-Essential插件命令
       usage: /tpaccepy

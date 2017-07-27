@@ -9,7 +9,6 @@ import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
@@ -38,19 +37,19 @@ public class CommandTpa {
         List<Player> AllPlayers = new ArrayList<>();
         AllPlayers.addAll(Bukkit.getServer().getOnlinePlayers());
         for (Player target : AllPlayers) {
-            if (TargetName == null ? false : TargetName.equals(target.getName())) {
+            if (TargetName == null ? false : (TargetName.equalsIgnoreCase(target.getName()) || target.getName().toLowerCase().startsWith(TargetName.toLowerCase()))) {
                 YamlConfiguration config = getConfiguration("/players/" + TargetName);
                 config.set("Request.TPATYPE", 1);
                 config.set("Request.TPA", Name);
                 saveConfiguration(config, "/players/" + TargetName);
-                player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("已向玩家 ").append(ChatColor.WHITE).append(TargetName).append(ChatColor.GOLD).append(" 发送了传送请求").toString());
+                player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("已向玩家 ").append(ChatColor.WHITE).append(target.getName()).append(ChatColor.GOLD).append(" 发送了传送请求").toString());
                 target.sendMessage((new StringBuilder()).append(ChatColor.AQUA).append(ChatColor.BOLD).append(Name).append(ChatColor.WHITE).append(ChatColor.BOLD).append(" 请求传送到您的身边").toString());
                 target.sendMessage((new StringBuilder()).append(ChatColor.WHITE).append(ChatColor.BOLD).append("输入 ").append(ChatColor.GREEN).append(ChatColor.BOLD).append("/tpaccept").append(ChatColor.WHITE).append(ChatColor.BOLD).append(" 同意他的请求").toString());
                 target.sendMessage((new StringBuilder()).append(ChatColor.WHITE).append(ChatColor.BOLD).append("输入 ").append(ChatColor.RED).append(ChatColor.BOLD).append("/tpdeny").append(ChatColor.WHITE).append(ChatColor.BOLD).append("   拒绝他的请求").toString());
                 return;
             }
         }
-        MsgPlayerNotFound(player,TargetName);
+        MsgPlayerNotFound(player, TargetName);
         return;
     }
 }
