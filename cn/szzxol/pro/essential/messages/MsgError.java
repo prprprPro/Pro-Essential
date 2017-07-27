@@ -29,4 +29,8 @@ public class MsgError {
         player.sendMessage((new StringBuilder()).append(ChatColor.RED).append(ChatColor.BOLD).append("你还没有设置这个家的坐标").toString());
     }
 
+    public static void MsgTpSelf(Player player) {
+        player.sendMessage((new StringBuilder()).append(ChatColor.RED).append(ChatColor.BOLD).append("不可以向自己发送传送请求").toString());
+    }
+
 }

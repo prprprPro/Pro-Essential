@@ -6,7 +6,6 @@ import static cn.szzxol.pro.essential.messages.MsgTip.MsgGamemode;
 import java.util.ArrayList;
 import java.util.List;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;

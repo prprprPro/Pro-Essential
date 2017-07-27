@@ -2,10 +2,11 @@ package cn.szzxol.pro.essential.commands;
 
 import static cn.szzxol.pro.essential.messages.MsgError.MsgErrorArgs;
 import static cn.szzxol.pro.essential.messages.MsgError.MsgPlayerNotFound;
+import static cn.szzxol.pro.essential.messages.MsgTip.MsgTp;
 import java.util.ArrayList;
 import java.util.List;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 
@@ -16,12 +17,16 @@ import org.bukkit.entity.Player;
 public class CommandTp {
 
     public static boolean CommandTp(Player player, Command cmd, String label, String[] args) {
-        if (args.length == 1) {
-            TP(player, args[0]);
-            return true;
-        } else {
-            MsgErrorArgs(player);
-            return true;
+        switch (args.length) {
+            case 1:
+                TP(player, args[0]);
+                return true;
+            case 3:
+                TPposition(player, args);
+                return true;
+            default:
+                MsgErrorArgs(player);
+                return true;
         }
     }
 
@@ -31,11 +36,28 @@ public class CommandTp {
         for (Player target : AllPlayers) {
             if (TargetName == null ? false : (TargetName.equalsIgnoreCase(target.getName()) || target.getName().toLowerCase().startsWith(TargetName.toLowerCase()))) {
                 player.teleport(target);
-                player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("已传送到玩家 ").append(ChatColor.WHITE).append(target.getName()).append(ChatColor.GOLD).append(" 身边").toString());
+                MsgTp(player, target);
                 return;
             }
         }
         MsgPlayerNotFound(player, TargetName);
+        return;
+    }
+
+    public static void TPposition(Player player, String[] args) {
+        try {
+            double n1 = Double.valueOf(args[0]);
+            double n2 = Double.valueOf(args[1]);
+            double n3 = Double.valueOf(args[2]);
+        } catch (Exception e) {
+            MsgErrorArgs(player);
+            return;
+        }
+        double x = Double.valueOf(args[0]);
+        double y = Double.valueOf(args[1]);
+        double z = Double.valueOf(args[2]);
+        Location l = new Location(player.getWorld(), x, y, z);
+        player.teleport(l);
         return;
     }
 }

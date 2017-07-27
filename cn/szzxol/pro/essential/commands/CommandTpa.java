@@ -4,10 +4,11 @@ import static cn.szzxol.pro.essential.utils.Configuration.getConfiguration;
 import static cn.szzxol.pro.essential.utils.Configuration.saveConfiguration;
 import static cn.szzxol.pro.essential.messages.MsgError.MsgErrorArgs;
 import static cn.szzxol.pro.essential.messages.MsgError.MsgPlayerNotFound;
+import static cn.szzxol.pro.essential.messages.MsgError.MsgTpSelf;
+import static cn.szzxol.pro.essential.messages.MsgTip.MsgTpRequest;
 import java.util.ArrayList;
 import java.util.List;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -30,7 +31,7 @@ public class CommandTpa {
 
     public static void TPA(Player player, String TargetName) {
         if (TargetName.equals(player.getName())) {
-            player.sendMessage((new StringBuilder()).append(ChatColor.RED).append(ChatColor.BOLD).append("不可以向自己发送传送请求").toString());
+            MsgTpSelf(player);
             return;
         }
         String Name = player.getName();
@@ -42,10 +43,7 @@ public class CommandTpa {
                 config.set("Request.TPATYPE", 1);
                 config.set("Request.TPA", Name);
                 saveConfiguration(config, "/players/" + TargetName);
-                player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("已向玩家 ").append(ChatColor.WHITE).append(target.getName()).append(ChatColor.GOLD).append(" 发送了传送请求").toString());
-                target.sendMessage((new StringBuilder()).append(ChatColor.AQUA).append(ChatColor.BOLD).append(Name).append(ChatColor.WHITE).append(ChatColor.BOLD).append(" 请求传送到您的身边").toString());
-                target.sendMessage((new StringBuilder()).append(ChatColor.WHITE).append(ChatColor.BOLD).append("输入 ").append(ChatColor.GREEN).append(ChatColor.BOLD).append("/tpaccept").append(ChatColor.WHITE).append(ChatColor.BOLD).append(" 同意他的请求").toString());
-                target.sendMessage((new StringBuilder()).append(ChatColor.WHITE).append(ChatColor.BOLD).append("输入 ").append(ChatColor.RED).append(ChatColor.BOLD).append("/tpdeny").append(ChatColor.WHITE).append(ChatColor.BOLD).append("   拒绝他的请求").toString());
+                MsgTpRequest(player, target);
                 return;
             }
         }
