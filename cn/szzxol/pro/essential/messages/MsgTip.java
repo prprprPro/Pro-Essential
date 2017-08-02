@@ -67,6 +67,14 @@ public class MsgTip {
     public static void MsgRain(Player player) {
         player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("已将天气设置为雨天...").toString());
     }
+    
+    public static void MsgDay(Player player) {
+        player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("已将时间设置为白天...").toString());
+    }
+    
+    public static void MsgNight(Player player) {
+        player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("已将时间设置为黑夜...").toString());
+    }
 
     public static void MsgReload(Player player) {
         player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("插件重载完成...").toString());

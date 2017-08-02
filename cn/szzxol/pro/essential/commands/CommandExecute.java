@@ -1,11 +1,13 @@
 package cn.szzxol.pro.essential.commands;
 
 import static cn.szzxol.pro.essential.commands.CommandBack.CommandBack;
+import static cn.szzxol.pro.essential.commands.CommandDay.CommandDay;
 import static cn.szzxol.pro.essential.commands.CommandFly.CommandFly;
 import static cn.szzxol.pro.essential.commands.CommandGamemode.CommandGamemode;
 import static cn.szzxol.pro.essential.commands.CommandHeal.CommandHeal;
 import static cn.szzxol.pro.essential.commands.CommandHome.CommandHome;
 import static cn.szzxol.pro.essential.commands.CommandInvsee.CommandInvsee;
+import static cn.szzxol.pro.essential.commands.CommandNight.CommandNight;
 import static cn.szzxol.pro.essential.commands.CommandRain.CommandRain;
 import static cn.szzxol.pro.essential.commands.CommandSethome.CommandSetHome;
 import static cn.szzxol.pro.essential.commands.CommandSetspawn.CommandSetspawn;
@@ -34,7 +36,7 @@ import org.bukkit.entity.Player;
 public class CommandExecute {
 
     public static List EO = new LinkedList<>(asList("back", "spawn", "tpa", "tpaccept", "tpdeny", "tpahere", "sethome", "home"));
-    public static List OP = new LinkedList<>(asList("fly", "gm", "speed", "tp", "tphere", "setspawn", "heal", "sun", "rain", "ess", "tpall", "invsee"));
+    public static List OP = new LinkedList<>(asList("fly", "gm", "speed", "tp", "tphere", "setspawn", "heal", "sun", "rain", "ess", "tpall", "invsee", "day", "night"));
 
     public static boolean CommandExecute(CommandSender sender, Command cmd, String label, String[] args) {
         String command = cmd.getName().toLowerCase();
@@ -82,6 +84,10 @@ public class CommandExecute {
                     return CommandRain(player, cmd, label, args);
                 case "invsee":
                     return CommandInvsee(player, cmd, label, args);
+                case "day":
+                    return CommandDay(player, cmd, label, args);
+                case "night":
+                    return CommandNight(player, cmd, label, args);
                 default:
                     return true;
             }

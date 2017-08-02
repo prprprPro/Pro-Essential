@@ -63,4 +63,10 @@ commands:
    invsee:
       description: Pro-Essential插件命令
       usage: /invsee
+   sun:
+      description: Pro-Essential插件命令
+      usage: /sun
+   night:
+      description: Pro-Essential插件命令
+      usage: /night
        
