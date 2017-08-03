@@ -1,6 +1,7 @@
 package cn.szzxol.pro.essential.commands;
 
 import static cn.szzxol.pro.essential.Essential.DefaultConfig;
+import static cn.szzxol.pro.essential.commands.CommandHome.MaxAmountOfHome;
 import static cn.szzxol.pro.essential.messages.MsgError.MsgErrorArgs;
 import static cn.szzxol.pro.essential.messages.MsgShow.MsgShowHomeList;
 import static cn.szzxol.pro.essential.messages.MsgTip.MsgHomeSet;
@@ -27,24 +28,30 @@ public class CommandSethome {
             MsgShowHomeList(player);
             return true;
         } else if (args.length == 1) {
-            try {
-                float number = Integer.valueOf(args[0]);
-            } catch (Exception e) {
-                MsgErrorArgs(player);
-                return true;
-            }
-            if (Integer.valueOf(args[0]) < 1 || Integer.valueOf(args[0]) > DefaultConfig.getInt("Settings.MaxAmountOfHome")) {
-                MsgErrorArgs(player);
-                return true;
-            }
-            config.set("Home.isSettingHome", false);
-            saveConfiguration(config, "/players/" + player.getName());
-            setHome(player, Integer.valueOf(args[0]));
+            setHomeProcess(player, args[0]);
             return true;
         } else {
             MsgErrorArgs(player);
             return true;
         }
+    }
+
+    public static void setHomeProcess(Player player, String msg) {
+        String Name = player.getName();
+        YamlConfiguration config = getConfiguration("/players/" + Name);
+        config.set("Home.isSettingHome", false);
+        saveConfiguration(config, "/players/" + player.getName());
+        try {
+            float number = Integer.valueOf(msg);
+        } catch (Exception e) {
+            MsgErrorArgs(player);
+            return;
+        }
+        if (Integer.valueOf(msg) < 1 || Integer.valueOf(msg) > MaxAmountOfHome) {
+            MsgErrorArgs(player);
+            return;
+        }
+        setHome(player, Integer.valueOf(msg));
     }
 
     public static void setHome(Player player, int index) {

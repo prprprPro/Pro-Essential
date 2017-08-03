@@ -1,6 +1,11 @@
 package cn.szzxol.pro.essential;
 
 import static cn.szzxol.pro.essential.commands.CommandExecute.CommandExecute;
+import cn.szzxol.pro.essential.listener.InventoryClick;
+import cn.szzxol.pro.essential.listener.PlayerChat;
+import cn.szzxol.pro.essential.listener.PlayerJoin;
+import cn.szzxol.pro.essential.listener.PlayerQuit;
+import cn.szzxol.pro.essential.listener.PlayerTeleport;
 import static cn.szzxol.pro.essential.utils.Configuration.getConfiguration;
 import static cn.szzxol.pro.essential.utils.Configuration.saveDefaultYaml;
 import static cn.szzxol.pro.essential.utils.Configuration.updatePermissionConfiguration;
@@ -41,10 +46,11 @@ public class Essential extends JavaPlugin {
     }
 
     public void initial() {
-        getServer().getPluginManager().registerEvents(new cn.szzxol.pro.essential.listener.PlayerChat(), this);
-        getServer().getPluginManager().registerEvents(new cn.szzxol.pro.essential.listener.PlayerJoin(), this);
-        getServer().getPluginManager().registerEvents(new cn.szzxol.pro.essential.listener.PlayerQuit(), this);
-        getServer().getPluginManager().registerEvents(new cn.szzxol.pro.essential.listener.PlayerTeleport(), this);
+        getServer().getPluginManager().registerEvents(new PlayerChat(), this);
+        getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
+        getServer().getPluginManager().registerEvents(new PlayerQuit(), this);
+        getServer().getPluginManager().registerEvents(new PlayerTeleport(), this);
+        getServer().getPluginManager().registerEvents(new InventoryClick(), this);
         saveDefaultYaml("spawn");
         saveDefaultYaml("Permission");
     }
@@ -53,7 +59,7 @@ public class Essential extends JavaPlugin {
     public void onDisable() {
         getLogger().info("插件卸载完成...");
     }
-    
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         CommandExecute(sender, cmd, label, args);

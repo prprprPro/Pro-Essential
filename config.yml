@@ -1,5 +1,9 @@
 Version: 1.0.5
 
 Settings:
-    MaxAmountOfHome: 3
-    ChatFormat: §2<§f%player%§2>§f %msg%
+    Home:
+        # 1 - Command, 2 - GUI
+        Type: 2
+        MaxAmountOfHome: 3
+    Chat:
+        ChatFormat: §2<§f%player%§2>§f %msg%
