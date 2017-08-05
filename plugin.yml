@@ -63,10 +63,17 @@ commands:
    invsee:
       description: Pro-Essential插件命令
       usage: /invsee
-   sun:
+   day:
       description: Pro-Essential插件命令
-      usage: /sun
+      usage: /day
    night:
       description: Pro-Essential插件命令
       usage: /night
+   exp:
+      description: Pro-Essential插件命令
+      usage: /exp
+      aliases: [experience]
+   level:
+      description: Pro-Essential插件命令
+      usage: /level
        

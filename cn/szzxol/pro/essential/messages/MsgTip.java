@@ -5,6 +5,7 @@ import static cn.szzxol.pro.essential.messages.MsgShow.MsgShowHomeList;
 import static cn.szzxol.pro.essential.utils.Mode.getFlyMode;
 import static cn.szzxol.pro.essential.utils.Mode.getFlyingMode;
 import static cn.szzxol.pro.essential.utils.Mode.getGameMode;
+import static org.bukkit.Bukkit.getLogger;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
@@ -67,11 +68,11 @@ public class MsgTip {
     public static void MsgRain(Player player) {
         player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("已将天气设置为雨天...").toString());
     }
-    
+
     public static void MsgDay(Player player) {
         player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("已将时间设置为白天...").toString());
     }
-    
+
     public static void MsgNight(Player player) {
         player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("已将时间设置为黑夜...").toString());
     }
@@ -117,6 +118,22 @@ public class MsgTip {
     public static void MsgTpall(Player player, Player target) {
         player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("已将玩家 ").append(ChatColor.WHITE).append(target.getName()).append(ChatColor.GOLD).append(" 传送到身边").toString());
         target.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("你被玩家 ").append(ChatColor.WHITE).append(player.getName()).append(ChatColor.GOLD).append(" 强制传送").toString());
+    }
+
+    public static void MsgExp(Player player, Player target) {
+        player.sendMessage((new StringBuilder()).append(ChatColor.GOLD).append("玩家 ").append(ChatColor.WHITE).append(target.getName()).append(ChatColor.GOLD).append("的经验值为 ").append(ChatColor.WHITE).append("Lv.").append(target.getLevel()).append(" ").append(ProcessStructure((int) (player.getExp() * 20), 20)).toString());
+    }
+
+    public static String ProcessStructure(int per, int all) {
+        String str1 = "", str2 = "";
+        for (int i = 0; i < all; i++) {
+            if (i < per) {
+                str1 += "|";
+            } else {
+                str2 += "|";
+            }
+        }
+        return (new StringBuilder()).append(ChatColor.WHITE).append("[").append(ChatColor.GREEN).append(str1).append(ChatColor.GRAY).append(str2).append(ChatColor.WHITE).append("]").toString();
     }
 
 }

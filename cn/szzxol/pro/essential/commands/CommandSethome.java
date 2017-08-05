@@ -42,7 +42,7 @@ public class CommandSethome {
         config.set("Home.isSettingHome", false);
         saveConfiguration(config, "/players/" + player.getName());
         try {
-            float number = Integer.valueOf(msg);
+            int number = Integer.valueOf(msg);
         } catch (Exception e) {
             MsgErrorArgs(player);
             return;
