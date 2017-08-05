@@ -1,6 +1,6 @@
 name: Pro-Essential
 main: cn.szzxol.pro.essential.Essential
-version: 1.0.5
+version: 1.0.4
 author: I_promise
 commands:
    ess:
