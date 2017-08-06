@@ -1,6 +1,7 @@
 package cn.szzxol.pro.essential.listener;
 
 import static cn.szzxol.pro.essential.commands.CommandHome.PlayerHome;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -23,7 +24,7 @@ public class InventoryClick implements Listener {
         Player player = (Player) event.getWhoClicked();
         event.setCancelled(true);
         player.updateInventory();
-        if (event.getRawSlot() < 0) {
+        if (event.getRawSlot() < 0 || event.getCurrentItem().getType() != Material.BED) {
             player.closeInventory();
             return;
         }

@@ -20,7 +20,7 @@ public class InventoryUtils {
         return inv;
     }
 
-    final static int[] sizeTable = {9, 18, 27, 36, 45, 54, Integer.MAX_VALUE};
+    final static int[] sizeTable = {9, 18, 27, 36, 45, 54, 63, Integer.MAX_VALUE};
 
     static int size(int x) {
         for (int i = 0;; i++) {
